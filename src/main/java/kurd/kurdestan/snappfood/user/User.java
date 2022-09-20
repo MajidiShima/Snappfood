@@ -25,17 +25,16 @@ public class User extends BaseEntity {
     private String lastName;
 
     @NotNull
-    @Column(name = "phone")
-    private Integer phone;
+    @Column(name = "phone" )
+    private Long phone;
 
     @NotNull
     @Column(name = "passWord")
-    private Integer passWord;
+    private String passWord;
 
     @NotNull
     @Column(name = "image")
     private String image;
-
 
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Address> addressList;

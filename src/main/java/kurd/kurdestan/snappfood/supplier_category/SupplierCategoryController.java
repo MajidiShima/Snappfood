@@ -15,8 +15,9 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping(value = "/supplierCategory")
 public class SupplierCategoryController {
+
     private final ISupplierCategoryService service;
-    private  SupplierCategoryMapper mapper;
+    private final SupplierCategoryMapper mapper;
 
 
     @PostMapping("/v1")

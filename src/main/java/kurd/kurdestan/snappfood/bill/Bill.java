@@ -15,15 +15,13 @@ import java.math.BigDecimal;
 @Audited
 public class Bill extends BaseEntity {
 
-
-    @Column(name = "image")
-    private String Image;
-
     @Column(name = "totalPrice")
     private BigDecimal totalPrice;
-
 
     @OneToOne
     @JoinColumn(name = "basket_id")
     private Basket basket;
+
+
+
 }

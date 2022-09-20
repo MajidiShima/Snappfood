@@ -20,7 +20,6 @@ import java.util.Optional;
 @Repository
 public interface SupplierRepository extends PagingAndSortingRepository<Supplier ,Long>, JpaSpecificationExecutor<Supplier> {
 
-
     Optional<Supplier> findAllByName(String title);
     List<Supplier> findAllByCategory_Id(Long categoryId);
 
@@ -30,11 +29,7 @@ public interface SupplierRepository extends PagingAndSortingRepository<Supplier 
     @Query("select plc,distance(plc.location, ?1) as distance from Supplier  plc order by distance")
     List<Tuple> findNearest(Point<G2D> refPnt);
 
-
-
-    // TODO: 9/17/2022 set these methods plz
     List<Supplier> findAll(Specification<Supplier> specification);
+    Page<Supplier>findAll(Pageable pageable);
     Page<Supplier> findAll   (Specification<Supplier> specification, Pageable pageable);
-
-
 }

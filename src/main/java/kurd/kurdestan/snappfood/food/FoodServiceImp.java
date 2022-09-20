@@ -77,12 +77,10 @@ public class FoodServiceImp implements IFoodService {
     }
 
     @Override
-    public List<Food> getAllBySupplierCategory_SupplierId(Long supplierId) {
+    public List<Food> getAllBySupplierCategory_SupplierId(Long SupplierCategoryId ) {
 
-        Supplier supplier = supplierService.getById(supplierId);
-
-        return repository.findAllBySupplierCategory_Supplier(supplier);
-
+        SupplierCategory supplierCategory = supplierCategoryService.getById(SupplierCategoryId);
+        return repository.findAllBySupplierCategory_Supplier(supplierCategory);
     }
 
     @Override

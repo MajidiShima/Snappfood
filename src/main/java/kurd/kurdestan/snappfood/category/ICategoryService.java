@@ -1,9 +1,7 @@
 package kurd.kurdestan.snappfood.category;
 
-
 import kurd.kurdestan.snappfood.common.SearchCriteria;
 import org.springframework.data.domain.Page;
-
 import java.util.List;
 
 public interface ICategoryService {
@@ -16,7 +14,7 @@ public interface ICategoryService {
     void deleteById(Long id);
 
     List<Category> search(List<SearchCriteria> searchCriteria);
-
+    Page<Category>paging(Integer page, Integer size);
     Page<Category> searchPaging(List<SearchCriteria> searchCriteria, Integer page, Integer size);
 
 

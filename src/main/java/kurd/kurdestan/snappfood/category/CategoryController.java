@@ -1,7 +1,12 @@
 package kurd.kurdestan.snappfood.category;
 
 
+import kurd.kurdestan.snappfood.common.PagingData;
+import kurd.kurdestan.snappfood.common.SearchCriteria;
+import kurd.kurdestan.snappfood.supplier_category.SupplierCategory;
+import kurd.kurdestan.snappfood.supplier_category.SupplierCategoryDTO;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +23,6 @@ public class CategoryController {
 
     @PostMapping("/v1")
     public ResponseEntity save(@RequestBody CategoryDTO categoryDTO) {
-
         Category category = mapper.toCategory(categoryDTO);
         service.save(category);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -53,8 +57,39 @@ public class CategoryController {
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Long id){
-
         service.deleteById(id);
        return ResponseEntity.ok().build();
     }
+    @GetMapping("/v1/paging/{page}/{size}")
+    public ResponseEntity <PagingData<CategoryDTO>> paging(@PathVariable Integer page, @PathVariable Integer size){
+        Page<Category> categoriesPage=service.paging(page,size);
+        int totalPage=categoriesPage.getTotalPages();
+        List<Category> data=categoriesPage.getContent();
+        List<CategoryDTO> supplierCategoryDTOList=mapper.toCategoryDTOS(data);
+        PagingData<CategoryDTO> pagingData=new PagingData<>(totalPage,page,supplierCategoryDTOList);
+        return ResponseEntity.ok(pagingData);
+    }
+
+    @GetMapping("/v1/search-page/")
+    public ResponseEntity <PagingData<CategoryDTO>> searchPage(@RequestBody List<SearchCriteria> searchCriteria, Integer page, Integer size){
+        Page<Category> categories=service.searchPaging(searchCriteria,page,size);
+        int total=categories.getTotalPages();
+        List<Category> data=categories.getContent();
+        List<CategoryDTO> categoryDTOList=mapper.toCategoryDTOS(data);
+        PagingData<CategoryDTO> pagingData=new PagingData<>(total,page,categoryDTOList);
+        return ResponseEntity.ok(pagingData);
+    }
+    @GetMapping("/v1/search")
+    public ResponseEntity<List<CategoryDTO>> search(@RequestBody List<SearchCriteria> searchCriteria){
+        List<Category> CategoryList=service.search(searchCriteria);
+        List<CategoryDTO> CategoryDTOList=mapper.toCategoryDTOS(CategoryList);
+        return ResponseEntity.ok(CategoryDTOList);
+
+    }
+
+
+
+
+
+
 }

@@ -1,9 +1,10 @@
 package kurd.kurdestan.snappfood.category;
 
-
 import kurd.kurdestan.snappfood.common.SearchCriteria;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 
-public class CategotyServiceImp implements ICategoryService{
+public class CategotyServiceImp implements ICategoryService {
 
     private CategoryRepository repository;
 
@@ -24,7 +25,7 @@ public class CategotyServiceImp implements ICategoryService{
 
     @Override
     public Category update(Category category) {
-        Category lastCategory=getById(category.getId());
+        Category lastCategory = getById(category.getId());
         lastCategory.setTypeOfCategory(category.getTypeOfCategory());
         lastCategory.setImage(category.getImage());
         lastCategory.setTitle(category.getTitle());
@@ -35,17 +36,17 @@ public class CategotyServiceImp implements ICategoryService{
     @Override
     public Category getById(Long id) {
 
-        Optional<Category> optional=repository.findById(id);
-        if(!optional.isPresent()){
-            throw  new NotFoundException("Category Not Found ");
+        Optional<Category> optional = repository.findById(id);
+        if (!optional.isPresent()) {
+            throw new NotFoundException("Category Not Found ");
         }
         return optional.get();
     }
 
     @Override
     public Category getAllByTitle(String title) {
-        Optional<Category> optional=repository.findByTitle(title);
-        if (!optional.isPresent()){
+        Optional<Category> optional = repository.findByTitle(title);
+        if (!optional.isPresent()) {
             throw new NotFoundException("Category Not Found");
         }
 
@@ -63,19 +64,22 @@ public class CategotyServiceImp implements ICategoryService{
         repository.deleteById(id);
     }
 
-    // TODO: 9/17/2022 do all these method
-    @Override
     public List<Category> search(List<SearchCriteria> searchCriteria) {
-
-
-        return null;
+        CategorySpecifcation categorySpecifcation = new CategorySpecifcation();
+        searchCriteria.forEach(criteria -> categorySpecifcation.add(criteria));
+        return repository.findAll(categorySpecifcation);
     }
 
+    @Override
+    public Page<Category> paging(Integer page, Integer size) {
+        return repository.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
+    }
 
     @Override
     public Page<Category> searchPaging(List<SearchCriteria> searchCriteria, Integer page, Integer size) {
-        return null;
+        CategorySpecifcation categorySpecifcation = new CategorySpecifcation();
+        searchCriteria.forEach(criteria -> categorySpecifcation.add(criteria));
+
+        return repository.findAll(categorySpecifcation, PageRequest.of(page, size, Sort.by("id").descending()));
     }
-
-
 }

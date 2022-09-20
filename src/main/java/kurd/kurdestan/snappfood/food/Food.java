@@ -34,7 +34,6 @@ public class Food extends BaseEntity {
     @Column(name="description")
     private String description;
 
-
     @ManyToOne()
     @JoinColumn(name = "SupplierCategory_id")
     private SupplierCategory supplierCategory;

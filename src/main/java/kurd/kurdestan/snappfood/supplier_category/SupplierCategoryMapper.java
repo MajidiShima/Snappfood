@@ -16,5 +16,4 @@ public interface SupplierCategoryMapper {
     List<SupplierCategoryDTO> toSupplierCategoryDTOS(List<SupplierCategory> supplierCategoryList);
 
 
-
 }

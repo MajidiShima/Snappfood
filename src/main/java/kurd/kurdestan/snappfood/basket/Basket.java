@@ -1,6 +1,5 @@
 package kurd.kurdestan.snappfood.basket;
 
-
 import kurd.kurdestan.snappfood.address.Address;
 import kurd.kurdestan.snappfood.basket_item.BasketItem;
 import kurd.kurdestan.snappfood.bill.Bill;
@@ -8,7 +7,6 @@ import kurd.kurdestan.snappfood.common.BaseEntity;
 import kurd.kurdestan.snappfood.supplier.Supplier;
 import lombok.Data;
 import org.hibernate.envers.Audited;
-
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -25,11 +23,9 @@ public class Basket extends BaseEntity {
     @Column(name="status")
     private Status status ;
 
-
     @NotNull
     @Column(name="paidPrice")
     private String paidPrice;
-
 
     @ManyToOne()
     @JoinColumn(name = "supplier_id")
@@ -44,6 +40,5 @@ public class Basket extends BaseEntity {
     @ManyToOne()
     @JoinColumn(name = "address_id")
     private Address address;
-
 
 }

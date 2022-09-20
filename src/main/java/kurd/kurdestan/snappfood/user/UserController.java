@@ -1,7 +1,5 @@
 package kurd.kurdestan.snappfood.user;
 
-import kurd.kurdestan.snappfood.category.Category;
-import kurd.kurdestan.snappfood.category.CategoryDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +39,12 @@ public class UserController {
         service.deleteById(id);
         return ResponseEntity.ok().build();
     }
-
+    @GetMapping("/v1/get-by-phone/{phone}")
+    public ResponseEntity<UserDTO> getByPhone(@PathVariable Long phone) {
+        User user = service.getByPhone(phone);
+        UserDTO userDTO = mapper.toUserDTO(user);
+        return ResponseEntity.ok(userDTO);
+    }
 
 
 

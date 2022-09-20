@@ -1,7 +1,6 @@
 package kurd.kurdestan.snappfood.user;
 
 
-import kurd.kurdestan.snappfood.category.Category;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
@@ -24,6 +23,7 @@ public class UserService implements IUserService {
     @Override
     public User update(User user) {
         User lastUser=getById(user.getId());
+
         lastUser.setImage(user.getImage());
         lastUser.setLastName(user.getLastName());
         lastUser.setName(user.getName());
@@ -53,5 +53,10 @@ public class UserService implements IUserService {
     public void deleteById(Long id) {
         getById(id);
         repository.deleteById(id);
+    }
+
+    @Override
+    public User getByPhone(Long phone) {
+       return repository.findByPhone(phone);
     }
 }

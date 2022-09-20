@@ -19,9 +19,7 @@ public interface SupplierCategoryRepository extends PagingAndSortingRepository<S
     List<SupplierCategory> findAllBySupplier(Supplier supplier);
     SupplierCategory findAllByName(String name);
     Optional<SupplierCategory> findById(Long id);
-
     Page<SupplierCategory>findAll(Pageable pageable);
-
     List<SupplierCategory> findAll(Specification<SupplierCategory> specification);
     Page<SupplierCategory> findAll   (Specification<SupplierCategory> specification, Pageable pageable);
 

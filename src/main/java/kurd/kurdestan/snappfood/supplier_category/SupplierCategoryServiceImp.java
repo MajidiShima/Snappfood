@@ -46,12 +46,9 @@ public class SupplierCategoryServiceImp implements ISupplierCategoryService {
         lastSupplierCategory.setAddress(supplierCategory.getAddress());
         lastSupplierCategory.setImage(supplierCategory.getImage());
         lastSupplierCategory.setName(supplierCategory.getName());
-
         Long supplierId = supplierCategory.getSupplier().getId();
         Supplier supplier = supplierService.getById(supplierId);
-
         lastSupplierCategory.setSupplier(supplier);
-
         return repository.save(lastSupplierCategory);
     }
 
@@ -98,6 +95,5 @@ public class SupplierCategoryServiceImp implements ISupplierCategoryService {
 
         return repository.findAll(supplierCategorySpecifcation, PageRequest.of(page,size ,Sort.by("id").descending()));
     }
-
 
 }
