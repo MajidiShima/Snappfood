@@ -6,15 +6,15 @@ import lombok.Data;
 
 @Data
 public class UserDTO extends BaseDTO {
-    @ApiModelProperty(required = false,hidden = false)
+    @ApiModelProperty(required = true,hidden = false)
     private String name;
-    @ApiModelProperty(required = false,hidden = false)
+    @ApiModelProperty(required = true,hidden = false)
     private String lastName;
-    @ApiModelProperty(required = false,hidden = true)
+    @ApiModelProperty(required = true,hidden = false)
     private Integer passWord;
-    @ApiModelProperty(required = false,hidden = true)
+    @ApiModelProperty(required = true,hidden = false)
     private String image;
-    @ApiModelProperty(required = false,hidden = true)
+    @ApiModelProperty(required = true,hidden = false)
     private Integer phone;
 
 }

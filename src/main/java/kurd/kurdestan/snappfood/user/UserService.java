@@ -1,16 +1,15 @@
 package kurd.kurdestan.snappfood.user;
 
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
-@Data
-
 public class UserService implements IUserService {
 
     private final UserRepository repository;
@@ -29,7 +28,6 @@ public class UserService implements IUserService {
         lastUser.setName(user.getName());
         lastUser.setPhone(user.getPhone());
         lastUser.setPassWord(user.getPassWord());
-        // lastUser.setAddressList(user.getAddressList());
 
         return repository.save(lastUser);
     }

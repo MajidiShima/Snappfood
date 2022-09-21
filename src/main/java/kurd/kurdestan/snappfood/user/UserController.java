@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @RequestMapping(value = "/user/")
 public class UserController {
+
     private IUserService service;
     private UserMapper mapper;
 

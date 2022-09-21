@@ -11,5 +11,7 @@ public class SnappApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SnappApplication.class);
+
+        System.out.println("finish");
     }
 }

@@ -1,6 +1,5 @@
 package kurd.kurdestan.snappfood.address;
 
-import kurd.kurdestan.snappfood.category.Category;
 import kurd.kurdestan.snappfood.user.IUserService;
 import kurd.kurdestan.snappfood.user.User;
 import lombok.AllArgsConstructor;

@@ -19,7 +19,7 @@ public class SupplierDTO {
     private String address;
     @ApiModelProperty(required = false,hidden = false)
     private String image;
-    @ApiModelProperty(required = true,hidden = false)
+    @ApiModelProperty(required = false,hidden = false)
     private CategoryDTO categories;
     @ApiModelProperty(required = true)
     private LocationDTO locationDTO;

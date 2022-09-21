@@ -1,7 +1,5 @@
 package kurd.kurdestan.snappfood.user;
 
-
-
 import kurd.kurdestan.snappfood.address.Address;
 import kurd.kurdestan.snappfood.common.BaseEntity;
 import lombok.Data;

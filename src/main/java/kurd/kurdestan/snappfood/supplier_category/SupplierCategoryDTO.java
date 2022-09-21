@@ -12,7 +12,7 @@ public class SupplierCategoryDTO extends BaseDTO {
     private String name;
     @ApiModelProperty(required = true,hidden = false)
     private String address;
-    @ApiModelProperty(required = true,hidden = false)
+    @ApiModelProperty(required = false,hidden = false)
     private Supplier supplier;
 
 
