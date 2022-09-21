@@ -21,13 +21,13 @@ public class SupplierCategoryController {
 
 
     @PostMapping("/v1")
-    public ResponseEntity save(@RequestBody SupplierCategoryDTO supplierCategoryDTO){
+    public ResponseEntity <SupplierCategoryDTO>save(@RequestBody SupplierCategoryDTO supplierCategoryDTO){
         SupplierCategory supplierCategory= mapper.toSupplierCategory(supplierCategoryDTO);
         service.save(supplierCategory);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @PutMapping("/v1")
-    public ResponseEntity update(@RequestBody SupplierCategoryDTO supplierCategoryDTO){
+    public ResponseEntity <SupplierCategoryDTO> update(@RequestBody SupplierCategoryDTO supplierCategoryDTO){
         SupplierCategory supplierCategory= mapper.toSupplierCategory(supplierCategoryDTO);
         service.update(supplierCategory);
         return ResponseEntity.ok().build();

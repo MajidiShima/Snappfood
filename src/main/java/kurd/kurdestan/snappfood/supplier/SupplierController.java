@@ -23,14 +23,14 @@ public class SupplierController {
     private SupplierMapper mapper;
 
     @PostMapping("/v1")
-    public ResponseEntity save(@RequestBody SupplierDTO supplierDTO) {
+    public ResponseEntity<SupplierDTO> save(@RequestBody SupplierDTO supplierDTO) {
         Supplier supplier = mapper.toSupplier(supplierDTO);
         supplierService.save(supplier);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/v1")
-    public ResponseEntity update(@RequestBody SupplierDTO supplierDTO) {
+    public ResponseEntity <SupplierDTO> update(@RequestBody SupplierDTO supplierDTO) {
         Supplier supplier = mapper.toSupplier(supplierDTO);
         supplierService.update(supplier);
         return ResponseEntity.ok().build();

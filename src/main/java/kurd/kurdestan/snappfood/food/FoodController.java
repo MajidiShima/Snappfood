@@ -17,14 +17,14 @@ public class FoodController {
     private FoodMapper mapper;
 
     @PostMapping("/v1")
-    public ResponseEntity save(@RequestBody FoodDTO foodDTO) {
+    public ResponseEntity<FoodDTO> save(@RequestBody FoodDTO foodDTO) {
         Food food = mapper.toFood(foodDTO);
         service.save(food);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/v1")
-    public ResponseEntity update(@RequestBody FoodDTO foodDTO) {
+    public ResponseEntity<FoodDTO> update(@RequestBody FoodDTO foodDTO) {
         Food food = mapper.toFood(foodDTO);
         service.update(food);
         return ResponseEntity.ok().build();

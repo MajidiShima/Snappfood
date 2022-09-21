@@ -33,26 +33,7 @@ public class BasketItemServiceImp implements IBasketItemService {
         return repository.save(basketItem);
     }
 
-    @Override
-    public BasketItem add(Long id) {
-        BasketItem basketItem=getById(id);
-        basketItem.setCount(basketItem.getCount()+1);
-        return repository.save(basketItem);
-    }
 
-    @Override
-    public BasketItem min(Long id) {
-        BasketItem basketItem=getById(id);
-        basketItem.setCount(basketItem.getCount()-1);
-        return repository.save(basketItem);
-    }
-
-    @Override
-    public void delete(Long byId) {
-
-        getById(byId);
-        repository.deleteById(byId);
-    }
 
     @Override
     public List<BasketItem> getAll() {

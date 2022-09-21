@@ -16,7 +16,7 @@ public class BillServiceImp implements IBillService {
 
     @Override
     public Bill save(Bill bill) {
-        return null;
+     return null;
     }
 
     @Override
@@ -26,16 +26,10 @@ public class BillServiceImp implements IBillService {
 
     @Override
     public void delete(Long id) {
-
         getById(id);
         repository.deleteById(id);
     }
 
-    @Override
-    public Bill AllPrice(BigDecimal money) {
-
-        return null;
-    }
 
     @Override
     public Bill getById(Long id) {

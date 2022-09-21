@@ -15,13 +15,13 @@ public class BasketController {
      private BasketMapper mapper;
 
   @PostMapping("/v1")
-  public ResponseEntity save(@RequestBody BasketDTO basketDTO){
+  public ResponseEntity<BasketDTO> save(@RequestBody BasketDTO basketDTO){
       Basket basket=mapper.toBasket(basketDTO);
       basketService.save(basket);
       return ResponseEntity.status(HttpStatus.CREATED).build();
   }
   @PutMapping("/v1")
-    public ResponseEntity update(@RequestBody BasketDTO basketDTO ){
+    public ResponseEntity<BasketDTO>update(@RequestBody BasketDTO basketDTO ){
       Basket basket=mapper.toBasket(basketDTO);
       basketService.update(basket);
       return ResponseEntity.ok().build();
