@@ -1,8 +1,5 @@
 package kurd.kurdestan.snappfood.address;
 
-
-import kurd.kurdestan.snappfood.supplier.Supplier;
-import kurd.kurdestan.snappfood.supplier.SupplierDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
