@@ -8,9 +8,6 @@ import java.util.List;
 
 public interface IBasketItemService {
 BasketItem save(BasketItem basketItem);
-BasketItem add(Long id);
-BasketItem min(Long id);
-void delete(Long byId);
 List<BasketItem> getAll();
 BasketItem getById(Long id);
 

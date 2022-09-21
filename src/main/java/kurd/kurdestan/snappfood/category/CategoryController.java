@@ -22,14 +22,14 @@ public class CategoryController {
     private final CategoryMapper mapper;
 
     @PostMapping("/v1")
-    public ResponseEntity save(@RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<CategoryDTO> save(@RequestBody CategoryDTO categoryDTO) {
         Category category = mapper.toCategory(categoryDTO);
         service.save(category);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/v1")
-    public ResponseEntity update(@RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity <CategoryDTO> update(@RequestBody CategoryDTO categoryDTO) {
         Category category = mapper.toCategory(categoryDTO);
         service.update(category);
         return ResponseEntity.ok().build();

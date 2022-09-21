@@ -15,13 +15,13 @@ public class AddressController {
     private AddressMapper mapper;
 
     @PostMapping("/v1")
-    public ResponseEntity save(@RequestBody AddressDTO addressDTO) {
+    public ResponseEntity<AddressDTO> save(@RequestBody AddressDTO addressDTO) {
         Address address = mapper.toAddress(addressDTO);
         addressService.save(address);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @PutMapping("/v1")
-    public ResponseEntity update(@RequestBody AddressDTO addressDTO) {
+    public ResponseEntity<AddressDTO> update(@RequestBody AddressDTO addressDTO) {
         Address address  = mapper.toAddress(addressDTO);
         addressService.update(address);
         return ResponseEntity.ok().build();

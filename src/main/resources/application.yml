@@ -15,3 +15,15 @@
         hibernate:
           ddl-auto: update
         show-sql: true
+
+
+    minio:
+      buket:
+        name: snappfood
+      default:
+        folder: "/"
+      access:
+        name: minioadmin
+        secret: minioadmin
+
+      url:  http://127.0.0.1:9000
